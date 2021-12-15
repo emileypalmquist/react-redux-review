@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import IncreaseCountButton from "./IncreaseCountButton";
 
 function App() {
+  const count = useSelector((currentState) => currentState);
+  const dispatch = useDispatch();
+
+  // function handleDecrease() {
+  //   // store.dispatch({ type: "DECREASE_COUNT" });
+  //   dispatch({ type: "DECREASE_COUNT" });
+  // }
+  useEffect(() => {
+    let posts = [{ id: 3, content: "hello world", like: 1 }];
+    // dispatch({ type: "SET_POSTS", payload: posts });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <h1>Current count: {count}</h1> */}
+      <IncreaseCountButton />
+      {/* <button onClick={handleDecrease}>-</button> */}
     </div>
   );
 }
